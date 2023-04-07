@@ -30,6 +30,11 @@ const router = createRouter({
         {
             path: '/propos', component: Propos
         },
+
+        /**
+         * Je pense que tu as compris le principe de base des routes, c'est tres bien
+         * Apres on va essayer de passer aux notions avancers.
+         */
         {
             path: '/reservation', component: Reservation
         },

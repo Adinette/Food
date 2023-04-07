@@ -5,7 +5,7 @@ import Dashbord from './layout/Dashbord.vue'
 <template>
  <Dashbord/>
 </template>
-
+<!-- Je commmente les parties devenues inutiles. A toi de voir si tu veux garder.
 <style scoped>
 .logo {
   height: 6em;
@@ -19,4 +19,4 @@ import Dashbord from './layout/Dashbord.vue'
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
-</style>
+</style> -->

@@ -4,7 +4,7 @@
         <h2 class="uppercase text-slate-700 text-2xl font-bold">Choose your pizza</h2>
         <div class="grid grid-cols-3 gap-4">
             <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/image15.jpg" alt="" class="hover:scale-125 duration-300 w-64">
+                <img src="/assets/image/image15.jpg" alt="" class="hover:scale-125 duration-300 w-64">
                 <div class="flex flex-col items-center space-y-1 text-center">
                     <span class="font-bold text-slate-700">Salad 1</span>
                     <span class="font-extrabold text-slate-700">$65.99</span>
@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/image14.jpg" alt="" class="hover:scale-125 duration-300 w-64">
+                <img src="/assets/image/image14.jpg" alt="" class="hover:scale-125 duration-300 w-64">
                 <div class="flex flex-col items-center space-y-1 text-center">
                     <span class="font-bold text-slate-700">Salad 2</span>
                     <span class="font-extrabold text-slate-700">$65.99</span>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/image59.png" alt="" class="hover:scale-125 duration-300 w-64">
+                <img src="/assets/image/image59.png" alt="" class="hover:scale-125 duration-300 w-64">
                 <div class="flex flex-col items-center space-y-1 text-center">
                     <span class="font-bold text-slate-700">Salad 3</span>
                     <span class="font-extrabold text-slate-700">$65.99</span>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/image58.jpg" alt="" class="hover:scale-125 duration-300 w-64">
+                <img src="/assets/image/image58.jpg" alt="" class="hover:scale-125 duration-300 w-64">
                 <div class="flex flex-col items-center space-y-1 text-center">
                     <span class="font-bold text-slate-700">Salad 4</span>
                     <span class="font-extrabold text-slate-700">$65.99</span>
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/image57.jpg" alt="" class="hover:scale-125 duration-300 w-64">
+                <img src="/assets/image/image57.jpg" alt="" class="hover:scale-125 duration-300 w-64">
                 <div class="flex flex-col items-center space-y-1 text-center">
                     <span class="font-bold text-slate-700">Salad 5</span>
                     <span class="font-extrabold text-slate-700">$65.99</span>
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/image56.jpg" alt="" class="hover:scale-125 duration-300 w-64">
+                <img src="/assets/image/image56.jpg" alt="" class="hover:scale-125 duration-300 w-64">
                 <div class="flex flex-col items-center space-y-1 text-center">
                     <span class="font-bold text-slate-700">Salad 6</span>
                     <span class="font-extrabold text-slate-700">$65.99</span>

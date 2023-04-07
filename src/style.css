@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 
-:root {
+/* J'ecris en Qwerty, donc ne t'occupes pas des accents.
+Tu n'as pas vraiment besoin de tout ce css, tu aurais du supprimer. C'est ce qui est venu avec le projet.
+sans le savoir, ca a affecter tout ton projet. Tu ne t'es pas demander pourquoi ton site est devenu noir ?
+C'etait a cause de tout ca. A toi de voir si tu veux decommenter ou tout supprimer.*/
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -92,3 +96,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+ */

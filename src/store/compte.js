@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-
+// Je vois que tu as essayer de creer un store, on verra ca plus tard, mais c'est pas mal.
 export const useCompteStore = defineStore("compte", {
     state: () => ({
    compte:{} }),
