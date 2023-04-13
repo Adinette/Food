@@ -1,10 +1,16 @@
 <script setup>
-import Dashbord from './layout/Dashbord.vue'
+import Dashbord from "./layout/Dashbord.vue";
 </script>
 
 <template>
- <Dashbord/>
+  <Dashbord />
 </template>
+
+<style>
+/* * {
+  border: 1px red solid;
+} */
+</style>
 <!-- Je commmente les parties devenues inutiles. A toi de voir si tu veux garder.
 <style scoped>
 .logo {

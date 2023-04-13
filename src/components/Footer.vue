@@ -1,37 +1,37 @@
 <template>
-   <div class="w-full h-full  p-4 ">
+   <div class="w-full h-full bg-green-700 p-4 ">
         <div class="mx-auto max-w-screen-xl flex justify-between">
             <div class="flex flex-col">
-                <span class="p-6 py-9 bg-green-700 rounded-full">
+                <span class="p-6 py-9 bg-white rounded-full">
                     <img src="/assets/image/icone7.png" class="w-8" alt="">
                 </span>
-                <span class="font-medium text-black-100 ">Ouverture</span>
-                <span class="text-black-100">17h a 19h</span>
+                <span class="font-medium text-white">Ouverture</span>
+                <span class="text-white">17h a 19h</span>
             </div>
             <div class="flex flex-col">
-                <span class="p-6 py-9 bg-green-700 rounded-full">
+                <span class="p-6 py-9 bg-white rounded-full">
                     <img src="/assets/image/icone4.png" class="w-8" alt="">
                 </span>
-                <span class="font-medium text-black-100 ">Localisation</span>
-                <span class="text-black-100">17h a 19h</span>
+                <span class="font-medium text-white ">Localisation</span>
+                <span class="text-white">17h a 19h</span>
             </div>
             <div class="flex flex-col">
-                <span class="p-6 py-9 bg-green-700 rounded-full">
+                <span class="p-6 py-9 bg-white rounded-full">
                     <img src="/assets/image/icone6.png" class="w-8" alt="">
                 </span>
-                <span class="font-medium text-black-100">Contact</span>
-                <span class="text-black-100">17h a 19h</span>
+                <span class="font-medium text-white">Contact</span>
+                <span class="text-white">17h a 19h</span>
             </div>
             <div class="flex flex-col">
-                <span class="p-6 py-9 bg-green-700 rounded-full">
+                <span class="p-6 py-9 bg-white rounded-full">
                     <img src="/assets/image/icone5.png" class="w-8" alt="">
                 </span>
-                <span class="font-medium text- bg-black-100 ">Email</span>
-                <span class="text-black-100">17h a 19h</span>
+                <span class="font-medium text- text-white ">Email</span>
+                <span class="text-white">17h a 19h</span>
             </div>
         </div>
         <div class="divide-x w-full"></div>
-        <div class="text-center text-black-100 font-medium">Make by <span class="text-green-700">Adi</span> | Tous les droits </div>
+        <div class="text-center text-white font-medium">Make by <span class="text-white">Adi</span> | Tous les droits </div>
     </div>
 </template>
 

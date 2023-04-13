@@ -20,7 +20,7 @@
                 <input type="date" name="dateReservation" id="dateReservation" class="rounded w-full p-2" v-model="reservation.dateReservation">
             </div>
 
-            <button @click="submitForm" class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-full">Make The
+           <button @click="submitForm" class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-full">Make The
                 Reservation</button>
         </form>
     </div>

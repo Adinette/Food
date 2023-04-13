@@ -1,66 +1,47 @@
-<template>
-   <div class="max-w-screen-xl mx-auto flex flex-col items-center space-y-4 p-6">
-        <h3 class="font-bold text-xl text-green-700">Rice</h3>
-        <h2 class="uppercase text-slate-700 text-2xl font-bold">Choose RICE</h2>
-        <div class="grid grid-cols-3 gap-4">
-            <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/imag26.jpg" alt="" class="hover:scale-125 duration-300 w-64">
-                <div class="flex flex-col items-center space-y-1 text-center">
-                    <span class="font-bold text-slate-700">Salad 1</span>
-                    <span class="font-extrabold text-slate-700">$65.99</span>
-                    <router-link to="panier"><button class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-32">Ajouter au panier</button></router-link>
-                </div>
-            </div>
-            <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/image68.jpg" alt="" class="hover:scale-125 duration-300 w-64">
-                <div class="flex flex-col items-center space-y-1 text-center">
-                    <span class="font-bold text-slate-700">Salad 2</span>
-                    <span class="font-extrabold text-slate-700">$65.99</span>
-                    <router-link to="panier"><button class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-32">Ajouter au panier</button></router-link>
-                </div>
-            </div>
-            <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/image69.jpg" alt="" class="hover:scale-125 duration-300 w-64">
-                <div class="flex flex-col items-center space-y-1 text-center">
-                    <span class="font-bold text-slate-700">Salad 3</span>
-                    <span class="font-extrabold text-slate-700">$65.99</span>
-                    <router-link to="panier"><button class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-32">Ajouter au panier</button></router-link>
-                </div>
-            </div>
-            <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/image70.png" alt="" class="hover:scale-125 duration-300 w-64">
-                <div class="flex flex-col items-center space-y-1 text-center">
-                    <span class="font-bold text-slate-700">Salad 4</span>
-                    <span class="font-extrabold text-slate-700">$65.99</span>
-                    <router-link to="panier"><button class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-32">Ajouter au panier</button></router-link>
-                </div>
-            </div>
-            <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/image71.jpg" alt="" class="hover:scale-125 duration-300 w-64">
-                <div class="flex flex-col items-center space-y-1 text-center">
-                    <span class="font-bold text-slate-700">Salad 5</span>
-                    <span class="font-extrabold text-slate-700">$65.99</span>
-                    <router-link to="panier"><button class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-32">Ajouter au panier</button></router-link>
-                </div>
-            </div>
-            <div class="shadow-md col-span-1 p-6 bg-white w-full max-w-xl ">
-                <img src="assets/image/image72.jpg" alt="" class="hover:scale-125 duration-300 w-64">
-                <div class="flex flex-col items-center space-y-1 text-center">
-                    <span class="font-bold text-slate-700">Salad 6</span>
-                    <span class="font-extrabold text-slate-700">$65.99</span>
-                    <router-link to="panier"><button class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-32">Ajouter au panier</button></router-link>
-                </div>
-            </div>
-        </div>   
-    </div>
-</template>
+<script setup>
+import Plat from "../components/Plat.vue";
+import { ref } from "vue";
+import {usePanierStore} from "../store/panier"
 
-<script>
-export default {
+const panier = usePanierStore()
 
-}
+
+const plats = ref([
+  {
+    image: "assets/image/image67.png",
+    nom: "Riz 1",
+    prix: "$65.99",
+  },
+  {
+    image: "assets/image/image68.jpg",
+    nom: "Riz 2",
+    prix: "$65.99",
+  },
+  {
+    image: "assets/image/image69.jpg",
+    nom: "Riz 3",
+    prix: "$65.99",
+  },
+  {
+    image: "assets/image/image70.png",
+    nom: "Riz 4",
+    prix: "$65.99",
+  },
+  {
+    image: "assets/image/image71.jpg",
+    nom: "Riz 5",
+    prix: "$65.99",
+  },
+  {
+    image: "assets/image/image72.jpg",
+    nom: "Riz 6",
+    prix: "$65.99",
+  },
+]);
 </script>
 
-<style>
-
-</style>
+<template>
+  <div class="grid grid-cols-3 gap-4 p-6 bg-white w-full">
+    <Plat v-for="(plat, index) in plats" :key="index" :plat="plat" />
+  </div>
+</template>

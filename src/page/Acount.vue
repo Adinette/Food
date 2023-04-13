@@ -14,7 +14,7 @@
                 <label for="" class="font-medium text-gray-700">Your Password</label>
                 <input type="password" name="password" id="password" v-model="compte.password" class="rounded w-full p-2">
             </div>
-            <button class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-full">Sign up</button>
+            <button @click="submitForm" class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-full">Sign up</button>
         </form>
 </div>       
 </template>

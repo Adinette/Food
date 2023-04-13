@@ -20,6 +20,8 @@
                     <router-link to="reservation">Reservation</router-link></li>
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
                     <router-link to="count">Acount</router-link></li>
+                    <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
+                    <router-link to="panier">Panier</router-link></li>
             </ul>
         </div>
     </header>
