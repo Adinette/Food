@@ -4,12 +4,12 @@
     <div class="flex flex-col items-center space-y-1 text-center">
       <span class="font-bold text-slate-700">{{ plat.nom }} </span>
       <span class="font-extrabold text-slate-700">{{ plat.prix }}</span>
-      <router-link to="panier"><button
+      <button
         @click="panier.ajoutPanier(plat)"
         class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-32"
       >
         Ajouter au panier
-      </button></router-link>
+      </button>
     </div>
   </div>
 </template>

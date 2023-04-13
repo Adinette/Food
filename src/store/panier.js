@@ -4,7 +4,7 @@ import { ref } from "vue";
 export const usePanierStore = defineStore("panier", {
   state: () => ({
     panier: [],
-    somme:"",
+    somme: 0,
   }),
   getters: {
     /**
@@ -15,13 +15,13 @@ export const usePanierStore = defineStore("panier", {
       return this.panier;
     },
     total() {
-      const somme = ref (0)
-     for(const plat in this.panier){
-          somme.value+=plat.prix
-     }
-     return somme;
-     
-  }
+      const somme = ref(0)
+      /* La boucle que tu avais utiliser ici n'etait pas bonne. Elle ne convient pas a ce contect */
+      this.panier.forEach(plat => {
+        somme.value += plat.prix;
+      });
+      return somme.value;
+    }
   },
   actions: {
     /**
@@ -33,13 +33,13 @@ export const usePanierStore = defineStore("panier", {
       console.log(this.panier);
     },
     retirerPanier(platIndex) {
-      this.panier.splice(platIndex,1);
+      this.panier.splice(platIndex, 1);
       console.log(this.panier);
     },
-    viderPanier(){
+    viderPanier() {
       this.panier.splice(0, this.panier.length);
       console.log("Panier vidé !");
     }
-   
+
   },
 });

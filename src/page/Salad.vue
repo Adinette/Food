@@ -1,16 +1,15 @@
 <script setup>
 import Plat from "../components/Plat.vue";
 import { ref } from "vue";
-import {usePanierStore} from "../store/panier"
+import { usePanierStore } from "../store/panier";
 
-const panier = usePanierStore()
-
+const panier = usePanierStore();
 
 const plats = ref([
   {
     image: "assets/image/pngegg.png",
     nom: "salad 1",
-    prix: "65.99",
+    prix: 65.99,
   },
   {
     image: "assets/image/image19.png",
@@ -20,7 +19,7 @@ const plats = ref([
   {
     image: "assets/image/pngegg.png",
     nom: "salad 1",
-    prix:65.99,
+    prix: 65.99,
   },
   {
     image: "assets/image/pngegg.png",
