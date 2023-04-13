@@ -16,7 +16,7 @@ export const usePanierStore = defineStore("panier", {
     },
     total() {
       const somme = ref (0)
-     for(let plat in this.panier){
+     for(const plat in this.panier){
           somme.value+=plat.prix
      }
      return somme;
@@ -36,6 +36,10 @@ export const usePanierStore = defineStore("panier", {
       this.panier.splice(platIndex,1);
       console.log(this.panier);
     },
-    
+    viderPanier(){
+      this.panier.splice(0, this.panier.length);
+      console.log("Panier vidé !");
+    }
+   
   },
 });

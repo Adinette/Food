@@ -10,32 +10,32 @@ const plats = ref([
   {
     image: "assets/image/image67.png",
     nom: "Riz 1",
-    prix: "$65.99",
+    prix:65.99,
   },
   {
     image: "assets/image/image68.jpg",
     nom: "Riz 2",
-    prix: "$65.99",
+    prix: 65.99,
   },
   {
     image: "assets/image/image69.jpg",
     nom: "Riz 3",
-    prix: "$65.99",
+    prix: 65.99,
   },
   {
     image: "assets/image/image70.png",
     nom: "Riz 4",
-    prix: "$65.99",
+    prix: 65.99,
   },
   {
     image: "assets/image/image71.jpg",
     nom: "Riz 5",
-    prix: "$65.99",
+    prix: 65.99,
   },
   {
     image: "assets/image/image72.jpg",
     nom: "Riz 6",
-    prix: "$65.99",
+    prix: 65.99,
   },
 ]);
 </script>
