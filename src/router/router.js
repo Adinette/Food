@@ -1,65 +1,67 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Acceuil from'../page/Acceuil.vue'
-import Propos from'../page/Propos.vue'
+import Home from'../page/Home.vue'
+import About from'../page/About.vue'
 import Reservation from'../page/Reservation.vue'
-import Commande from'../page/Commande.vue'
-import Acount from'../page/Acount.vue'
-import Panier from '../page/Panier.vue'
-import Salad from '../page/Salad.vue'
-import Poulet from '../page/Poulet.vue'
-import Chawarma from '../page/Chawarma.vue'
-import Riz from '../page/Riz.vue'
-import Pattes from '../page/Pattes.vue'
-import Pizza from '../page/Pizza.vue'
+import Order from'../page/client/Order.vue'
+
+import Basket from '../page/Basket.vue'
+import Create from '../page/client/Create.vue'
+import CreateA from '../page/Admin/CreateA.vue'
+import Pay from '../page/Pay.vue'
+import AcountA from '../page/Admin/AcountA.vue'
+import OrderA from'../page/Admin/OrderA.vue'
+import Add from'../page/Admin/Add.vue'
+import AddP from'../page/Admin/AddP.vue'
+import Meals from'../page/client/Meals.vue'
+import MealsA from'../page/Admin/MealsA.vue'
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        /**
-         * path constitue la route de ta page par example pour helloworld. localhost:3000/hello-world
-         * component represente la page qui va s'afficher dans l'example precedant, HelloWorld.
-         */
-        
         {
-            path: '/acceuil', component: Acceuil
+            path: '/home', component: Home
         },
        
         {
-            path: '/propos', component: Propos
+            path: '/about', component: About
         },
-
-        /**
-         * Je pense que tu as compris le principe de base des routes, c'est tres bien
-         * Apres on va essayer de passer aux notions avancers.
-         */
         {
             path: '/reservation', component: Reservation
         },
         {
-            path: '/commande', component: Commande
+            path: '/order', component: Order
+        },
+        
+        {
+            path: '/basket', component: Basket
+        },
+       
+        {
+            path: '/create', component: Create
         },
         {
-            path: '/count', component: Acount
-        },    
-        {
-            path: '/panier', component: Panier
+            path: '/createA', component: CreateA
         },
         {
-            path: '/salad', component: Salad
+            path: '/pay', component: Pay
         },
         {
-            path: '/poulet', component: Poulet
+            path: '/acountA', component: AcountA
         },
         {
-            path: '/chawarma', component: Chawarma
+            path: '/orderA', component: OrderA
         },
         {
-            path: '/riz', component: Riz
+            path: '/add', component: Add
+        },
+        
+        {
+            path: '/addP', component: AddP
         },
         {
-            path: '/pattes', component: Pattes
+            path: '/meals/:category', component: Meals
         },
         {
-            path: '/pizza', component: Pizza
+            path: '/mealsA/:category', component: MealsA
         },
     ]
 });

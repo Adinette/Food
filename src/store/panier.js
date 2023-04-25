@@ -5,6 +5,7 @@ export const usePanierStore = defineStore("panier", {
   state: () => ({
     panier: [],
     somme: 0,
+    count:0,
   }),
   getters: {
     /**
@@ -21,6 +22,9 @@ export const usePanierStore = defineStore("panier", {
         somme.value += plat.prix;
       });
       return somme.value;
+    },
+    nbPlat() {
+      return this.panier.length;
     }
   },
   actions: {
@@ -31,14 +35,17 @@ export const usePanierStore = defineStore("panier", {
     ajoutPanier(plat) {
       this.panier.push(plat);
       console.log(this.panier);
+      this.count = this.panier.length;
     },
     retirerPanier(platIndex) {
       this.panier.splice(platIndex, 1);
       console.log(this.panier);
+      this.count = this.panier.length;
     },
     viderPanier() {
       this.panier.splice(0, this.panier.length);
       console.log("Panier vidé !");
+      this.count = this.panier.length;
     }
 
   },

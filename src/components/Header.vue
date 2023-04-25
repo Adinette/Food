@@ -6,22 +6,22 @@
   
   <header class="head">
         <div class="part">
-            <span class="your">Your<span class="text-green-400">Dish</span></span>
+            <span class="your font-bold">Your<span class="text-green-700 font-bold">Dish</span></span>
         </div>
         <div class="text-gray-700 text-md">
             <ul class="menu flex justify-between space-x-6">
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
-                    <router-link to="acceuil">Acceuil</router-link> </li>
+                    <router-link to="home">Acceuil</router-link> </li>
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
-                    <router-link to="commande">Commande</router-link></li>
+                    <router-link to="order">Commande</router-link></li>
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300"> 
-                    <router-link to="propos">A Propos</router-link></li>
+                    <router-link to="about">A Propos</router-link></li>
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
                     <router-link to="reservation">Reservation</router-link></li>
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
                     <router-link to="count">Acount</router-link></li>
                     <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
-                    <router-link to="panier">Panier</router-link></li>
+                    <router-link to="basket">Panier</router-link></li>
             </ul>
         </div>
     </header>

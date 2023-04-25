@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-screen-xl mx-auto flex flex-col items-center space-y-4 p-6">
-        <h3 class="font-bold text-xl text-green-700">Reservation</h3>
-        <h2 class="uppercase text-slate-700 text-2xl font-bold">Fill this form to make a Reservation</h2>
+        <h3 class="font-bold  text-xl text-green-700">Reservation</h3>
+        <h2 class="uppercase text-black text-2xl font-bold">Fill this form to make a Reservation</h2>
         <form @submit.prevent action="" class="bg-gray-100 shadow w-2/3 p-4 space-y-4">
             <div class="space-y-2">
                 <label for="name" class="font-medium text-gray-700">Your Name</label>
