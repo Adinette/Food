@@ -32,7 +32,7 @@ const router = createRouter({
         },
         
         {
-            path: '/basket', component: Basket
+            path: '/meals/basket', component: Basket
         },
        
         {

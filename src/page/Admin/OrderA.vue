@@ -1,9 +1,7 @@
 <template>
     <router-link to="add"> <button class="p-2 py-1 m-1 bg-green-700 text-white text-xl font-medium rounded w-32"> Ajouter</button></router-link>
-    <div class="grid grid-cols-3 gap-4 p-6 bg-white w-full">
-       <CategoryA
-         v-for="(categorie, index) in categories "
-         :key="index" categorie="categorie"/>
+    <div id="categorieConteneur" class="grid grid-cols-3 gap-4 p-6 bg-white w-full">
+       <CategoryA  v-for ="categorie in categories" :categorie="categorie" :key="categorie.id"/> 
      </div>
      
    </template>
@@ -41,35 +39,65 @@
     ],
   },
    ]); 
-   
-//document.addEventListener("DOMContentLoaded", function() {
 
   try{
     
       const result = request('categorie', 'GET', { "Authorization": localStorage.getItem('token') }, null, false);
       result.then(data => {
-        for (let i = 0; i = categories; i++) {
-          //afficher les informations enregistrée dans la base de donnée sur cette page
-    if (categories == categories.nom && categories == categories.image) {
-      
-    }
-  }
-        console.log(data)
+        let html = '';
+        for(let item of data){ 
+          html += `<div id="category_id" class="shadow-md col-span-1 p-10 bg-white w-full max-w-xl">
+          <img
+        src= "${ item.imageUrl }"
+        alt=""
+        class="hover:scale-125  duration-300 w-32"
+      />
+    <div class="flex flex-col items-end  space-y-2 text-center">
+        <span class="font-bold text-slate-700">${ item.nom }</span>
+        <button
+          class="p-2  py-1 m-2 bg-green-700 row-span-2 hover:bg-slate-500 text-white text-xl font-medium rounded w-32">
+          Consulter categorie</button>
+    </div>
+    <router-link to="add"><button type="submit" id="btn_modifier_categorie"
+                class=" idCategorie p-2 py-1 m-2 text-white bg-green-700  hover:bg-slate-400 justify-center text-xl font-medium rounded w-32">
+                Modifier</button> </router-link>
+                <button
+                class="p-2 py-1 m-2 text-white bg-green-700  hover:bg-slate-400 justify-center text-xl font-medium rounded w-32">
+                Supprimer</button>
+              </div>`
+        }
+        let element = document.getElementById('categorieConteneur') 
+        element.innerHTML= html
+        
       });
-    
   }catch(error){
       console.log(error)
   }
-//modification d'une categorie deja ajoutée en affichant les information dans le 
-//formulaire lorsqu'on clique sur modifier
-// let modifier = document.getElementById("btn_modifier_categorie");
-// modifier.addEventListener('click', (event) => {
-//   event.preventDefault(); 
-//   alert('ok')
-// })
-//})
+  document.addEventListener("DOMContentLoaded", function() {
+  let modifier = document.getElementById("btn_modifier_categorie");
+  modifier.addEventListener('click', () => {
+    const categoryId = editButton.getAttribute('category_id');
+    const userId = form.getElementById('#category-userId-input').value;
+    const nom = form.getElementById('#category-nom-input').value;
+    const imageUrl = form.getElementById('#category-imageUrl-input').value;
+    location.assign("/add");
+    let form = document.getElementById("formCat");
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      alert('ok')
+      
+ try {
+     
+  const result = request(
+    'categorie', 'PUT', { "Authorization": localStorage.getItem('token') }, null, false);
+      result.then((data) => {
+        alert('La catégorie a été mise à jour avec succès !');
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+});
+});
+});
    </script>
-
-<style>
-
-</style>

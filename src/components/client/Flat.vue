@@ -5,7 +5,7 @@
       <span class="font-bold text-slate-700">{{ plat.nom }} </span>
       <span class="font-extrabold text-slate-700">{{ plat.prix }}</span>
       <span class="font-normal text-black"><p>{{ plat.description }}</p></span>
-      <router-link to="basket"><button
+      <router-link to="/meals/basket"><button
         @click="panier.ajoutPanier(plat)"
         class="p-2 py-1 bg-green-700 hover:bg-slate-500 text-white text-xl font-medium rounded w-32"
       >

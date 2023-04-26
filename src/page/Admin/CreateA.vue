@@ -43,7 +43,7 @@ form.addEventListener('submit', (event) => {
                 role: "admin"
             });
             result.then(data => console.log(data))
-            
+            console.log("utilisateur crée")
             location.assign("/acountA");
         }catch(error){
 

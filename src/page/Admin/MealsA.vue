@@ -26,28 +26,44 @@
           description:
             "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
         },
-        {
-        image: "../assets/image/image19.png",
-        nom: "salad 2",
-        prix: 4000,
-        description:
-          "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
-      },
-      {
-        image: "../assets/image/image37.jpg",
-        nom: "salad 3",
-        prix: 3500,
-        description:
-          "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
-      },
+        
       ],
     },
   ]);
-  
+  try{
+    
+    const result = request('plat', 'GET', { "Authorization": localStorage.getItem('token') }, null, false);
+    result.then(data => {
+      let html = '';
+      for(let item in data){ 
+        html += `<div class="shadow-md col-span-1 p-10 bg-white w-full max-w-xl">
+    <img :src=${item.image} alt="" class="hover:scale-125 duration-300 w-32" />
+
+    <div class="flex flex-col items-end space-y-1 text-center">
+      <span class="font-bold text-slate-700">${ item.nom } </span>
+      <span class="font-extrabold text-slate-700">${ item.prix }</span>
+      <span class="font-normal text-center text-black"><p>${item.description }</p></span>
+      
+    <button id="platConteneur"
+        class="p-2 py-1 bg-green-700 hover:bg-slate-500 text-white text-xl font-medium rounded w-32">Modifier
+      </button> 
+      <button  
+        class=" idPlat p-2 py-1 bg-green-700 hover:bg-slate-500 text-white text-xl font-medium rounded w-32">Supprimer
+      </button> 
+    </div>
+  </div>`
+      }
+      let element = document.getElementById('platConteneur') 
+      element.innerHTML= html
+    });
+}catch(error){
+    console.log(error)
+}
+
   const categoryName = useRoute().params.category;
   
   const category = categories.value.find(x => x.nom === categoryName);
-  //console.log(category.meals);
+ 
   
   
   </script>
