@@ -43,7 +43,7 @@ form.addEventListener('submit', (event) => {
             });
             
             result.then(data => {
-                alert('ok')
+               
               try {
                   
                   localStorage.setItem("token", data.token);
