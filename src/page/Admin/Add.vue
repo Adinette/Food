@@ -28,12 +28,15 @@
           class="rounded bg-white w-full p-2"
         />
       </div>
-      <button
+      
+        <button
         type="submit"
         class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-full"
       >
         Ajouter
       </button>
+      
+      
     </form>
   </div>
 </template>
@@ -61,7 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let image = document.getElementById("image");
     if (nom.value == "" || image.value == "") {
       alert("Tous les champs sont obligatoires");
-    } else {
+    } 
+    else if(edit != item.id) {
       try {
         const toSend = new FormData();
         toSend.append("categorie", JSON.stringify({ nom: nom.value }));
@@ -80,6 +84,17 @@ document.addEventListener("DOMContentLoaded", function () {
       } catch (error) {
         console.log(error);
       }
+    }else{
+      try {
+  const result = request(
+    'categorie', 'PUT', { "Authorization": localStorage.getItem('token') }, null, false);
+      result.then((data) => {
+        alert('La catégorie a été mise à jour avec succès !');
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
     }
   });
 });

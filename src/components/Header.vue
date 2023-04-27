@@ -19,9 +19,9 @@
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
                     <router-link to="/reservation">Reservation</router-link></li>
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
-                    <router-link to="/count">Acount</router-link></li>
+                    <router-link to="/acountA">Acount</router-link></li>
                     <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
-                    <router-link to="/basket">Panier</router-link></li>
+                    <router-link to="/meals/basket">Panier</router-link></li>
             </ul>
         </div>
     </header>

@@ -80,23 +80,13 @@
     const userId = form.getElementById('#category-userId-input').value;
     const nom = form.getElementById('#category-nom-input').value;
     const imageUrl = form.getElementById('#category-imageUrl-input').value;
-    location.assign("/add");
+    location.assign("to='edit/${item.id}'");
     let form = document.getElementById("formCat");
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       alert('ok')
       
- try {
-     
-  const result = request(
-    'categorie', 'PUT', { "Authorization": localStorage.getItem('token') }, null, false);
-      result.then((data) => {
-        alert('La catégorie a été mise à jour avec succès !');
-      });
-      
-    } catch (error) {
-      console.log(error);
-    }
+ 
 });
 });
 });
