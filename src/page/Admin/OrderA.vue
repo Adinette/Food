@@ -58,7 +58,7 @@
           class="p-2  py-1 m-2 bg-green-700 row-span-2 hover:bg-slate-500 text-white text-xl font-medium rounded w-32">
           Consulter categorie</button>
     </div>
-    <router-link to="add"><button type="submit" id="btn_modifier_categorie"
+    <router-link to="/add"><button type="submit" id="btn_modifier_categorie"
                 class=" idCategorie p-2 py-1 m-2 text-white bg-green-700  hover:bg-slate-400 justify-center text-xl font-medium rounded w-32">
                 Modifier</button> </router-link>
                 <button
