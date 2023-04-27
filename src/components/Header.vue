@@ -11,17 +11,17 @@
         <div class="text-gray-700 text-md">
             <ul class="menu flex justify-between space-x-6">
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
-                    <router-link to="home">Acceuil</router-link> </li>
+                    <router-link to="/home">Acceuil</router-link> </li>
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
-                    <router-link to="order">Commande</router-link></li>
+                    <router-link to="/order">Commande</router-link></li>
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300"> 
-                    <router-link to="about">A Propos</router-link></li>
+                    <router-link to="/about">A Propos</router-link></li>
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
-                    <router-link to="reservation">Reservation</router-link></li>
+                    <router-link to="/reservation">Reservation</router-link></li>
                 <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
-                    <router-link to="count">Acount</router-link></li>
+                    <router-link to="/count">Acount</router-link></li>
                     <li class=" px-1 border-b-2 border-transparent hover:border-green-400 duration-300">
-                    <router-link to="basket">Panier</router-link></li>
+                    <router-link to="/basket">Panier</router-link></li>
             </ul>
         </div>
     </header>
