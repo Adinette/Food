@@ -65,12 +65,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (nom.value == "" || image.value == "") {
       alert("Tous les champs sont obligatoires");
     } 
-    else if(edit != item.id) {
+    else {
       try {
         const toSend = new FormData();
         toSend.append("categorie", JSON.stringify({ nom: nom.value }));
         toSend.append("image", image.files[0]);
-        console.log(typeof toSend);
+        // console.log(typeof toSend);
 
         const result = request(
           "categorie",
@@ -84,20 +84,22 @@ document.addEventListener("DOMContentLoaded", function () {
       } catch (error) {
         console.log(error);
       }
-    }else{
-      try {
-  const result = request(
-    'categorie', 'PUT', { "Authorization": localStorage.getItem('token') }, null, false);
-      result.then((data) => {
-        alert('La catégorie a été mise à jour avec succès !');
-      });
-      
-    } catch (error) {
-      console.log(error);
-    }
     }
   });
 });
 </script>
 
 <style></style>
+if(edit != item.id) 
+else{
+  try {
+const result = request(
+'categorie', 'PUT', { "Authorization": localStorage.getItem('token') }, null, false);
+  result.then((data) => {
+    alert('La catégorie a été mise à jour avec succès !');
+  });
+  
+} catch (error) {
+  console.log(error);
+}
+}
