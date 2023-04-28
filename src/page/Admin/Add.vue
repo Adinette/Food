@@ -28,15 +28,13 @@
           class="rounded bg-white w-full p-2"
         />
       </div>
-      
-        <button
+
+      <button
         type="submit"
         class="p-2 py-1 bg-green-700 text-white text-xl font-medium rounded w-full"
       >
         Ajouter
       </button>
-      
-      
     </form>
   </div>
 </template>
@@ -53,7 +51,7 @@ const categorie = ref({
 
 const route = useRoute();
 const id = ref(null);
-
+let edit;
 id.value = route.params.id;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -64,13 +62,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let image = document.getElementById("image");
     if (nom.value == "" || image.value == "") {
       alert("Tous les champs sont obligatoires");
-    } 
-    else {
+    } else if (edit != categorie?.id) {
       try {
         const toSend = new FormData();
         toSend.append("categorie", JSON.stringify({ nom: nom.value }));
         toSend.append("image", image.files[0]);
-        // console.log(typeof toSend);
 
         const result = request(
           "categorie",
@@ -80,7 +76,35 @@ document.addEventListener("DOMContentLoaded", function () {
           false
         );
         result.then((data) => {});
-        // location.assign("/orderA");
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        const result = request(
+          "categorie",
+          "GET",
+          { Authorization: localStorage.getItem("token") },
+          null,
+          false
+        );
+        result.then((data) => {
+          console.log(id);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+      try {
+        const result = request(
+          "categorie",
+          "PUT",
+          { Authorization: localStorage.getItem("token") },
+          null,
+          false
+        );
+        result.then((data) => {
+          alert("La catégorie a été mise à jour avec succès !");
+        });
       } catch (error) {
         console.log(error);
       }
@@ -90,16 +114,3 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <style></style>
-if(edit != item.id) 
-else{
-  try {
-const result = request(
-'categorie', 'PUT', { "Authorization": localStorage.getItem('token') }, null, false);
-  result.then((data) => {
-    alert('La catégorie a été mise à jour avec succès !');
-  });
-  
-} catch (error) {
-  console.log(error);
-}
-}

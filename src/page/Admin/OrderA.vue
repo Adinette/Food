@@ -6,9 +6,9 @@
       Ajouter
     </button></router-link
   >
-
-  <div v-for="categorie in categories" :key="categorie?.id">
-    <div>
+  <div class="grid grid-cols-3 gap-4 p-6 bg-white w-full">
+  <div  v-for="categorie in categories" :key="categorie?.id">
+   
       <div class="shadow-md col-span-1 p-10 bg-white w-full max-w-xl">
         <img
           :src="categorie?.image"
@@ -40,6 +40,8 @@
         </button>
       </div>
     </div>
+      
+   
   </div>
 </template>
 <script setup>
@@ -47,37 +49,6 @@ import { onMounted, ref } from "vue";
 
 import { request } from "/src/request";
 let data;
-/* const categories = ref([
-  {
-    image: "assets/image/image37.jpg",
-    nom: "Salad ",
-    lien: "/mealsA/Salad",
-    meals: [
-      {
-        image: "../assets/image/pngegg.png",
-        nom: "salad 1",
-        prix: 4500,
-        description:
-          "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
-      },
-      {
-        image: "../assets/image/image19.png",
-        nom: "salad 2",
-        prix: 4000,
-        description:
-          "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
-      },
-      {
-        image: "../assets/image/image37.jpg",
-        nom: "salad 3",
-        prix: 3500,
-        description:
-          "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
-      },
-    ],
-  },
-]); */
-
 const categories = ref(null);
 
 onMounted(() => {
@@ -93,37 +64,11 @@ onMounted(() => {
       categories.value = data;
       console.log(categories.value);
     });
-
-    //   try {
-    //   const result = await request('categorie', 'GET', { "Authorization": localStorage.getItem('token') }, null, false);
-    //   this.categories = result.data
-    // } catch (error) {
-    //   console.log(error)
-    // }
   } catch (error) {
     console.log(error);
   }
+  
 });
-//   document.addEventListener("DOMContentLoaded", function() {
-//   let modifier = document.getElementById("btn_modifier_categorie");
-//   modifier.addEventListener('click', () => {
-//     const categoryId = editButton.getAttribute('category_id');
-//     const userId = form.getElementById('#category-userId-input').value;
-//     const nom = form.getElementById('#category-nom-input').value;
-//     const imageUrl = form.getElementById('#category-imageUrl-input').value;
-//     location.assign("to='edit/${item.id}'");
-//     let form = document.getElementById("formCat");
-//     form.addEventListener('submit', (event) => {
-//       event.preventDefault();
-//       alert('ok')
 
-// });
-// });
-// });
+
 </script>
-<!-- 
-        -->
-
-let html = ''; // for(let item of data) // let element =
-document.getElementById('categorieConteneur') // element.innerHTML= html
-<!-- } -->
