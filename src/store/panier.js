@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-// Je vois que tu as essayer de creer un store, on verra ca plus tard, mais c'est pas mal.
 export const usePanierStore = defineStore("panier", {
   state: () => ({
     panier: [],
@@ -17,7 +16,6 @@ export const usePanierStore = defineStore("panier", {
     },
     total() {
       const somme = ref(0)
-      /* La boucle que tu avais utiliser ici n'etait pas bonne. Elle ne convient pas a ce contect */
       this.panier.forEach(plat => {
         somme.value += plat.prix;
       });
@@ -36,6 +34,7 @@ export const usePanierStore = defineStore("panier", {
       this.panier.push(plat);
       console.log(this.panier);
       this.count = this.panier.length;
+      console.log(plat);
     },
     retirerPanier(platIndex) {
       this.panier.splice(platIndex, 1);

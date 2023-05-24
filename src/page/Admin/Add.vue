@@ -43,37 +43,32 @@
 
 <script setup>
 import { ref } from "vue";
-import { useRoute } from "vue-router";
 import { request } from "/src/request";
+import { onMounted } from "vue";
+import { useRoute } from "vue-router";
 
 const categorie = ref({
   nom: "",
   image: null,
 });
+const router = useRoute();
+const id = ref(router.params.id);
+console.log(id.value);
 
-const route = useRoute();
-const id = ref(null);
-// Je t'avais deja dit de ne pas utiliser les elements du JS mais on dirait que tu as manger la pate avec.
-// let edit;
-id.value = route.params.id;
-
-//Ce code s'execute des que le composant est monte.
 onMounted(() => {
-  //si l'id existe, tu executes la requete de verification. Normalement tu dois mettre les valeurs drecuperer dans e formulaire mais je ne sais pas ce que ca contient donc
-  //c'est a toi de faire un log et de mettre les bonnes infos ou il faut3
   if (id.value) {
     try {
-      const result = request(
-        "categorie",
+      const getCategorie = request(
+        "categorie/" + id.value,
         "GET",
         { Authorization: localStorage.getItem("token") },
         null,
         false
       );
-      result.then((data) => {
-        // en suposant que la donne renvoyer contient le nom directement00
-        //categorie.value.nom = data.nom
-        console.log(data);
+
+      getCategorie.then((data) => {
+        categorie.value.nom = data.nom;
+        categorie.value.image = data.image;
       });
     } catch (error) {
       console.log(error);
@@ -90,14 +85,28 @@ const submit = () => {
   //Tu verifie si les champs sont emplies
   if (categorie.value.nom == "" || categorie.value.image == null) {
     alert("Tous les champs sont obligatoires");
+    return 0;
   }
-
   const toSend = new FormData();
   toSend.append("categorie", JSON.stringify({ nom: categorie.value.nom }));
   toSend.append("image", categorie.value.image);
-
-  //Si l'id est definie, tu execute cette requete
   if (id.value) {
+    try {
+      const result = request(
+        "categorie/" + id,
+        "PUT",
+        { Authorization: localStorage.getItem("token") },
+        toSend,
+        false
+      );
+      result.then((data) => {
+        alert("La catégorie a été mise à jour avec succès !");
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    id.value = null;
+  } else {
     try {
       const result = request(
         "categorie",
@@ -108,21 +117,6 @@ const submit = () => {
       );
       result.then((res) => {
         console.log(res);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  } else {
-    try {
-      const result = request(
-        "categorie",
-        "PUT",
-        { Authorization: localStorage.getItem("token") },
-        toSend,
-        false
-      );
-      result.then((data) => {
-        alert("La catégorie a été mise à jour avec succès !");
       });
     } catch (error) {
       console.log(error);

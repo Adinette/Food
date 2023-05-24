@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-screen-xl mx-auto flex flex-col items-center space-y-4 p-6">
         
-            <h3 class="font-bold text-xl text-green-700">Your Acount</h3>
+            <h3 class="font-bold text-xl text-green-700">Votre Compte</h3>
       <form action="" id="form" class="bg-gray-100 shadow w-2/3 p-4 space-y-4">
                 <div class="space-y-2">
                     <label for="email" class="font-medium text-gray-700">Email :</label>
@@ -14,7 +14,6 @@
                 <h2 class="">Mot de passe oublié ?</h2>
                 <div class="space-y-4">
                     <button type="submit" class="p-2 py-1 m-1 bg-green-700 text-white text-xl font-medium rounded w-full">Se connecter</button>
-                    <router-link to="createA"><button  class="p-2 py-1 m-1 bg-green-700 text-white text-xl font-medium rounded w-full">S'Inscrire</button></router-link>
                 </div>
                
               </form>
@@ -25,6 +24,7 @@
   
 
 import {request} from "/src/request";
+import router from '/src/router/router'
 document.addEventListener("DOMContentLoaded", function() {
 
 let form = document.getElementById("form");
@@ -43,18 +43,26 @@ form.addEventListener('submit', (event) => {
             });
             
             result.then(data => {
-               
-              try {
-                  
+                console.log(data);
                   localStorage.setItem("token", data.token);
                   localStorage.setItem("role", data.role);
-                  localStorage.getItem("token");
-                  localStorage.getItem("role");
-                  } catch (error) {
-                    console.log(error);
-            }
+                  localStorage.setItem("userId", data.userId);
+               const token= localStorage.getItem("token");
+               const role= localStorage.getItem("role");
+               const userId= localStorage.getItem("userId");
+               
+               if (role =="admin"){
+                
+                router.push({ name: 'orderA' })
+                
+               }else{
+                
+                router.push({ name: 'order' })
+                
+               }
+             
             })
-        
+        console.log("connexion etablie")
         }catch(error){
 
             console.log(error)
@@ -62,6 +70,7 @@ form.addEventListener('submit', (event) => {
         }
 
     }
+   
 })
 });
 </script>

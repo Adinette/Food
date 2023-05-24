@@ -1,54 +1,71 @@
 <template>
-  <div v-if="category" class="grid grid-cols-3 gap-4 p-6 bg-white w-full">
-    <Flat v-for="(plat, index) in category.meals" :key="index" :plat="plat" />
+ <div v-if="categories" class="grid grid-cols-3 gap-4 p-6 bg-white w-full">
+    <Flat v-for="(plat, index) in categories" :key="index" :plat="plat" />
   </div>
 
   <div v-else>La categorie que vous cherchez n'existe pas</div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-
 import Flat from "../../components/client/Flat.vue";
+import { request } from "/src/request";
 
-const categories = ref([
-  {
-    image: "assets/image/image37.jpg",
-    nom: "Salad",
-    lien: "/salad",
-    meals: [
-      {
-        image: "../assets/image/pngegg.png",
-        nom: "salad 1",
-        prix: 4500,
-        description:
-          "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
-      },
-      {
-        image: "../assets/image/image19.png",
-        nom: "salad 2",
-        prix: 4000,
-        description:
-          "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
-      },
-      {
-        image: "../assets/image/image37.jpg",
-        nom: "salad 3",
-        prix: 3500,
-        description:
-          "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
-      },
-    ],
-  },
+const route = useRoute();
+const id = ref(route.params.id);
+const categories = ref(null);
+// const count = null;
+// const _id = "";
+// const userId = "";
+// localStorage.getItem("userId");
+// defineProps({
+//   plat: {},
+// });
 
-]);
+onMounted(() => {
+  getCategorieFood(id);
+  // ajoutPanier();
+});
 
-const categoryName = useRoute().params.category;
+const getCategorieFood = (id) => {
+  try {
+    const result = request(
+      "plat/" + id.value,
+      "GET",
+      { Authorization: localStorage.getItem("token") },
+      null,
+      false
+    );
+    result.then((data) => {
+      categories.value = data;
+      console.log(data);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-const category = categories.value.find(x => x.nom === categoryName);
-//console.log(category.meals);
-
+// const ajoutPanier = (id) => {
+//   try {
+//     const result = request(
+//       "panier",
+//       "POST",
+//       {
+//         "Content-Type": "application/json"
+//       },
+//       JSON.stringify({
+//         _id: '',
+//         userId: '',
+//       })
+//     );
+//     result.then((data) => {
+//       console.log(data);
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 </script>
 

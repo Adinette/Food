@@ -1,45 +1,80 @@
 <template>
   <div class="grid grid-cols-3 gap-4 p-6 bg-white w-full">
-    <Category
-      v-for="(categorie, index) in categories"
-      :key="index"
-      :categorie="categorie"
-    />
+    <div v-for="categorie in categories" :key="categorie?.id">
+      <div class="shadow-md col-span-1 p-10 bg-white w-full max-w-xl">
+        <img
+          :src="categorie?.image"
+          alt=""
+          class="hover:scale-125 duration-300 w-32"
+        />
+        <div class="flex flex-col items-end space-y-2 text-center">
+          <span class="font-bold text-slate-700">{{ categorie?.nom }}</span>
+          <router-link
+            :to="{ name: 'meals', params: { id: categorie?._id } }"
+            class="p-2 py-1 m-2 bg-green-700 row-span-2 hover:bg-slate-500 text-white text-xl font-medium rounded w-32"
+          >
+            Consulter categorie
+          </router-link>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import Category from "../../components/client/Category.vue";
+import { onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+import { request } from "/src/request";
+// import router from "/src/router/router";
+// const categorie=ref(null);
+const categories = ref(null);
+const route = useRoute();
+const id = ref(null);
+const categorie = ref({
+  nom: "",
+  image: null,
+});
+const meals = ref({
+  image: null,
+  nom: "",
+  prix: null,
+  description: "",
+});
+onMounted(() => {
+  getCategorie();
+  getPlat();
+});
 
-const categories = ref([
-  {
-    image: "assets/image/image37.jpg",
-    nom: "Salad ",
-    lien: "/meals/Salad",
-    meals: [
-      {
-        image: "../assets/image/pngegg.png",
-        nom: "salad 1",
-        prix: 4500,
-        description:
-          "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
-      },
-      {
-        image: "../assets/image/image19.png",
-        nom: "salad 2",
-        prix: 4000,
-        description:
-          "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
-      },
-      {
-        image: "../assets/image/image37.jpg",
-        nom: "salad 3",
-        prix: 3500,
-        description:
-          "Constitué de la lecture la tomate l'oignon l'oeuf et la viande",
-      },
-    ],
-  },
-]);
+const getCategorie = () => {
+  try {
+    const result = request(
+      "categorie",
+      "GET",
+      { Authorization: localStorage.getItem("token") },
+      null,
+      false
+    );
+    result.then((data) => {
+      categories.value = data;
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+const getPlat = (id) => {
+  try {
+    const result = request(
+      "plat/" + categorie?.id,
+      "GET",
+      { Authorization: localStorage.getItem("token") },
+      null,
+      false
+    );
+    result.then((data) => {
+      meals.value = data;
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 </script>

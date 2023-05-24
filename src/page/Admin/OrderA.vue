@@ -7,8 +7,7 @@
     </button></router-link
   >
   <div class="grid grid-cols-3 gap-4 p-6 bg-white w-full">
-  <div  v-for="categorie in categories" :key="categorie?.id">
-   
+    <div v-for="categorie in categories" :key="categorie?.id">
       <div class="shadow-md col-span-1 p-10 bg-white w-full max-w-xl">
         <img
           :src="categorie?.image"
@@ -17,41 +16,54 @@
         />
         <div class="flex flex-col items-end space-y-2 text-center">
           <span class="font-bold text-slate-700">{{ categorie?.nom }}</span>
-          <button
+          <router-link :to="{ name: 'mealsA', params: { id:categorie?._id } } "
             class="p-2 py-1 m-2 bg-green-700 row-span-2 hover:bg-slate-500 text-white text-xl font-medium rounded w-32"
           >
             Consulter categorie
-          </button>
+          </router-link>
         </div>
-        <router-link :to="'/edit/' + categorie?.id"
-          ><button
-            type="submit"
-            id="btn_modifier_categorie"
-            class="idCategorie p-2 py-1 m-2 text-white bg-green-700 hover:bg-slate-400 justify-center text-xl font-medium rounded w-32"
-          >
-            Modifier
-          </button>
+        <router-link
+          :to="{ name: 'edit', params: { id:categorie?._id } }"
+          class="idCategorie p-2 py-1 m-2 text-white bg-green-700 hover:bg-slate-400 justify-center text-xl font-medium rounded w-32"
+        >
+          Modifier
         </router-link>
+
         <button
-          @click="retirerPanier()"
+          @click="deleteCategorie(categorie?._id)"
           class="p-2 py-1 m-2 text-white bg-green-700 hover:bg-slate-400 justify-center text-xl font-medium rounded w-32"
         >
           Supprimer
         </button>
       </div>
     </div>
-      
-   
   </div>
 </template>
 <script setup>
 import { onMounted, ref } from "vue";
-
+import { useRoute } from "vue-router";
 import { request } from "/src/request";
-let data;
+import router from "/src/router/router";
+// const categorie=ref(null);
 const categories = ref(null);
-
+const route = useRoute();
+const id = ref(null);
+const categorie = ref({
+  nom: "",
+  image: null,
+});
+const meals=ref({
+  image: null,
+  nom: "",
+  prix: null,
+  description:"",
+})
 onMounted(() => {
+  getCategorie();
+  getPlat();
+});
+
+const getCategorie = () => {
   try {
     const result = request(
       "categorie",
@@ -62,13 +74,43 @@ onMounted(() => {
     );
     result.then((data) => {
       categories.value = data;
-      console.log(categories.value);
     });
   } catch (error) {
     console.log(error);
   }
-  
-});
+};
 
-
+const deleteCategorie = (id) => {
+  try {
+    const result = request(
+      "categorie/" + id,
+      "DELETE",
+      { Authorization: localStorage.getItem("token") },
+      null,
+      false
+    );
+    result.then((data) => {
+    });
+    getCategorie
+  } catch (error) {
+    console.log(error);
+  }
+};
+const getPlat = (id) => {
+  try {
+    const result = request(
+      "plat/"+categorie?.id ,
+      "GET",
+      { Authorization: localStorage.getItem("token") },
+      null,
+      false
+    );
+    result.then((data) => {
+      meals.value = data;
+      
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 </script>
