@@ -17,7 +17,7 @@ export const usePanierStore = defineStore("panier", {
     total() {
       const somme = ref(0)
       this.panier.forEach(plat => {
-        somme.value += plat.prix;
+        somme.value +=  plat.prix;
       });
       return somme.value;
     },

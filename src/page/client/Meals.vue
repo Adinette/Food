@@ -46,26 +46,6 @@ const getCategorieFood = (id) => {
   }
 };
 
-// const ajoutPanier = (id) => {
-//   try {
-//     const result = request(
-//       "panier",
-//       "POST",
-//       {
-//         "Content-Type": "application/json"
-//       },
-//       JSON.stringify({
-//         _id: '',
-//         userId: '',
-//       })
-//     );
-//     result.then((data) => {
-//       console.log(data);
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
 
 </script>
 
