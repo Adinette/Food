@@ -51,6 +51,11 @@
         >
           <router-link :to="{ name: 'basket' }">Panier</router-link>
         </li>
+        <li
+          class="px-1 border-b-2 border-transparent hover:border-green-400 duration-300"
+        >
+          <router-link :to="{ name: 'reservation' }">Reservation</router-link>
+        </li>
         
         <li 
         class="px-1 border-b-2  bg-green-700 text-white text-xl font-medium rounded">Deconnexion

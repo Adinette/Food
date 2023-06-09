@@ -15,10 +15,10 @@
     <div class="flex justify-around items-center p-4 mt-12">
       <div class="w-1/3 flex flex-col space-y-2">
         <p class="text-xl text-slate font-bold">
-          Votre panier contient :{{ panierStore.nbPlat }} plat(s)
+          Votre panier contient :{{ 0 }} plat(s)
         </p>
         <div class="bg-green-700 space-y-3 p-8 w-64 rounded-xl">
-          <div class="text-xl text-white">Total: {{ panierStore.total }}</div>
+          <div class="text-xl text-white">Total: {{ 0 }}</div>
           <router-link to="count"
             ><button
               class="p-1 py-1 bg-green-700 text-white hover:bg-slate-500 justify-center text-xl font-medium rounded w-32"
@@ -54,7 +54,6 @@
         <span
           ><div v-for="(panier, index) in panier" :key="index">{{}}</div>
           <button
-            @click="panierStore.retirerPanier()"
             class="p-2 py-1 text-white hover:bg-slate-400 justify-center text-xl font-medium rounded w-32"
           >
             RETIRER
@@ -76,7 +75,6 @@
     </div>
     <div class="space-y-2 text-center pt-6 pb-6">
       <button
-        @click="panierStore.viderPanier(index)"
         class="p-2 py-1 bg-green-700 text-white hover:bg-slate-500 text-xl font-medium rounded w-32"
       >
         Vider Panier
@@ -85,9 +83,21 @@
   </body>
 </template>
 <script setup>
-import { usePanierStore } from "../store/panier";
-const panierStore = usePanierStore();
-const panier = panierStore.getPanier;
- panierStore.ajoutPanier;
-panierStore.total;
+import { onMounted, ref } from "vue";
+import { getMeal } from "../service/basket.service";
+// import { usePanierStore } from "../store/panier";
+// const panierStore = usePanierStore();
+// const panier = panierStore.getPanier;
+//  panierStore.ajoutPanier;
+// panierStore.total;
+const panier = ref(null);
+
+onMounted(() => {
+  getMeals();
+});
+
+const getMeals = async () => {
+  panier.value = await getMeal(localStorage.getItem("userId"));
+  console.log(panier);
+};
 </script>

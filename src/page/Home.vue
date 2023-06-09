@@ -102,7 +102,5 @@
 </template>
 
 <script setup>
-// w-24 h-12 overflow-hidden
-// grid grid-flow-col duration-1
-// w-24 m-8 relative
+
 </script>

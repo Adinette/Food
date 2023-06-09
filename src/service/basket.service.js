@@ -14,8 +14,8 @@ export function addBasket(data) {
  *
  * @return {Promise} A Promise that resolves to the retrieved marque information.
  */
-export function getMeal() {
-  return request("panier/+userId", "GET");
+export function getMeal(id) {
+  return request("panier/"+id, "GET");
 }
 /**
  * Sends a PUT request to update cars with the provided data.

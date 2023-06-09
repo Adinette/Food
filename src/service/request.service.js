@@ -5,17 +5,20 @@ export async function request(url, method, data) {
     method: method,
     headers: {
       "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token"),
     },
     body: JSON.stringify(data),
   };
 
+  const token = localStorage.getItem("token");
+  if (token) {
+    requestOptions.headers.Authorization = token;
+  }
+
   const response = await fetch(`${baseUrl}${url}`, requestOptions);
   if (!response.ok) {
+    console.log(response);
     throw new Error("Erreur lors de la requête");
   }
 
   return response.json();
 }
-
-export default request;

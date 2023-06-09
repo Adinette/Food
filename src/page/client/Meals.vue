@@ -1,8 +1,7 @@
 <template>
- <div v-if="categories" class="grid grid-cols-3 gap-4 p-6 bg-white w-full">
+  <div v-if="categories" class="grid grid-cols-3 gap-4 p-6 bg-white w-full">
     <Flat v-for="(plat, index) in categories" :key="index" :plat="plat" />
   </div>
-
   <div v-else>La categorie que vous cherchez n'existe pas</div>
 </template>
 
@@ -15,17 +14,8 @@ import { request } from "/src/request";
 const route = useRoute();
 const id = ref(route.params.id);
 const categories = ref(null);
-// const count = null;
-// const _id = "";
-// const userId = "";
-// localStorage.getItem("userId");
-// defineProps({
-//   plat: {},
-// });
-
 onMounted(() => {
   getCategorieFood(id);
-  // ajoutPanier();
 });
 
 const getCategorieFood = (id) => {
@@ -45,10 +35,4 @@ const getCategorieFood = (id) => {
     console.log(error);
   }
 };
-
-
 </script>
-
-<style>
-
-</style>

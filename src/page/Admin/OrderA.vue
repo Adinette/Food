@@ -16,21 +16,22 @@
         />
         <div class="flex flex-col items-end space-y-2 text-center">
           <span class="font-bold text-slate-700">{{ categorie?.nom }}</span>
-          <router-link :to="{ name: 'mealsA', params: { id:categorie?._id } } "
+          <router-link
+            :to="{ name: 'mealsA', params: { id: categorie?._id } }"
             class="p-2 py-1 m-2 bg-green-700 row-span-2 hover:bg-slate-500 text-white text-xl font-medium rounded w-32"
           >
             Consulter categorie
           </router-link>
         </div>
         <router-link
-          :to="{ name: 'edit', params: { id:categorie?._id } }"
+          :to="{ name: 'edit', params: { id: categorie?._id } }"
           class="idCategorie p-2 py-1 m-2 text-white bg-green-700 hover:bg-slate-400 justify-center text-xl font-medium rounded w-32"
         >
           Modifier
         </router-link>
 
         <button
-          @click="deleteCategorie(categorie?._id)"
+          @click="deleteCategory(categorie?._id)"
           class="p-2 py-1 m-2 text-white bg-green-700 hover:bg-slate-400 justify-center text-xl font-medium rounded w-32"
         >
           Supprimer
@@ -42,7 +43,12 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import { request } from "/src/request";
+
+import {
+  getCategorie,
+  deleteCategorie,
+  getPlat,
+} from "../../service/category.service";
 import router from "/src/router/router";
 // const categorie=ref(null);
 const categories = ref(null);
@@ -52,63 +58,40 @@ const categorie = ref({
   nom: "",
   image: null,
 });
-const meals=ref({
+const meals = ref({
   image: null,
   nom: "",
   prix: null,
-  description:"",
-})
+  description: "",
+});
 onMounted(() => {
-  getCategorie();
-  getPlat();
+  getCategory();
+  getMeal();
 });
 
-const getCategorie = () => {
+const getCategory = async () => {
   try {
-    const result = request(
-      "categorie",
-      "GET",
-      { Authorization: localStorage.getItem("token") },
-      null,
-      false
-    );
-    result.then((data) => {
-      categories.value = data;
-    });
+    const gettedCategory = await getCategorie(data);
+    categories.value = gettedCategory.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-const deleteCategorie = (id) => {
+const deleteCategory = async (id) => {
   try {
-    const result = request(
-      "categorie/" + id,
-      "DELETE",
-      { Authorization: localStorage.getItem("token") },
-      null,
-      false
-    );
-    result.then((data) => {
-    });
-    getCategorie
+    const deletedCategory =await deleteCategorie(id)
+    getCategory;
+    console.log(deletedCategory);
   } catch (error) {
     console.log(error);
   }
 };
-const getPlat = (id) => {
+const getMeal = async () => {
   try {
-    const result = request(
-      "plat/"+categorie?.id ,
-      "GET",
-      { Authorization: localStorage.getItem("token") },
-      null,
-      false
-    );
-    result.then((data) => {
-      meals.value = data;
-      
-    });
+    const gettedMeal = await getPlat(id);
+
+    meals.value = gettedMeal.data;
   } catch (error) {
     console.log(error);
   }
