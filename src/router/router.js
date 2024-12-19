@@ -1,10 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../page/Home.vue";
-import About from "../page/About.vue";
 import Reservation from "../page/Reservation.vue";
 import Order from "../page/client/Order.vue";
-
-import Basket from "../page/Basket.vue";
 import Create from "../page/client/Create.vue";
 import CreateA from "../page/Admin/CreateA.vue";
 import Pay from "../page/Pay.vue";
@@ -25,10 +22,6 @@ const router = createRouter({
     },
 
     {
-      path: "/about",
-      component: About,
-    },
-    {
       path: "/reservation",
       component: Reservation,
       name: "reservation",
@@ -40,23 +33,6 @@ const router = createRouter({
       path: "/order",
       component: Order,
       name: "order",
-      meta: {
-        requireAuth: true,
-      },
-    },
-
-    {
-      path: "/meals/:id",
-      component: Basket,
-      name: "basket",
-      meta: {
-        requireAuth: true,
-      },
-    },
-    {
-      path: "/basket",
-      component: Basket,
-      name: "basket",
       meta: {
         requireAuth: true,
       },
