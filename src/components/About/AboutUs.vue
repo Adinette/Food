@@ -3,8 +3,8 @@
 
 <template>
     <div class="py-12 mt-8" id="about">
-        <div class="container">
-            <div class="max-w-sm md:max-w-screen-md xl:max-w-6xl mx-auto flex flex-col md:flex-col xl:flex-row items-center justify-between">
+        <div class="container mx-auto">
+            <div class="max-w-sm md:max-w-screen-md lg:max-w-6xl mx-auto flex flex-col md:flex-col lg:flex-row items-center justify-between">
                 <div class="bg-slate-950 rounded-3xl bg hidden md:flex">
                     <div class="flex justify-center items-center mt-12 bg-green-600 rounded-3xl m-auto bg-green">
                        <img src="/assets/image/image39.jpg" alt="" class="w-80 h-80 rounded-full">
