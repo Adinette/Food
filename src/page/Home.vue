@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="max-w-sm md:max-w-screen-md xl:max-w-screen-xl mx-auto mt-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Card v-for="(card, index) in cards" :key="index" :image="card.image" :altText="card.altText"
           :title="card.title" :description="card.description" :buttonLink="card.buttonLink" :price="card.price" />
       </div>
